@@ -1,0 +1,48 @@
+/** {
+    box-sizing: border-box;
+}*/
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.game-table {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    margin: 0 -1px;
+}
+
+.cell {
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid olivedrab;
+}
+button {
+    display: block;
+    padding: 8px 16px;
+    background: green;
+    border: none;
+    text-transform: uppercase;
+    color: aliceblue;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
