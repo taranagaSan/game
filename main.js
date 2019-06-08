@@ -25,12 +25,16 @@ class Game {
   }
 
   makeMove(e) {
-    if (this.flag) {
+    let cellWithData = e.target.dataset.gamer;
+
+    if (this.flag && !cellWithData) {
       game.moveX(e);
       this.flag = false;
-    } else {
+    } else if(!cellWithData) {
       game.moveY(e);
       this.flag = true;
+    } else {
+      e.preventDefault();
     }
   }
 
@@ -40,7 +44,7 @@ class Game {
     let newArrayY = [];
     let cells = document.querySelectorAll('.cell');
 
-    [...cells].forEach(item => {
+    cells.forEach(item => {
       if (item.dataset.gamer === 'x') {
         newArrayX.push(+item.id);
       } else if (item.dataset.gamer === 'y') {
@@ -95,7 +99,7 @@ class Game {
     makeResultY();
   };
 
-   show() {
+  static show() {
 
     let gameTable = document.querySelector('.game-table');
     for (let i = 1; i <= 9; i++) {
@@ -107,11 +111,11 @@ class Game {
     }
   };
 
-   restart() {
+  restart() {
     this.winner = null;
     gameTable.innerHTML = '';
     this.flag = true;
-    game.show();
+    Game.show();
   };
 }
 
@@ -119,7 +123,7 @@ let game = new Game();
 
 let gameTable = document.querySelector('.game-table');
 
-document.addEventListener('DOMContentLoaded', game.show);
+document.addEventListener('DOMContentLoaded', Game.show);
 gameTable.addEventListener('click', (e) => game.makeMove(e));
 
 let btn = document.querySelector('button');
